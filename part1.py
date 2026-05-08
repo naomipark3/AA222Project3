@@ -259,7 +259,7 @@ def main():
 
     rows = []
     layouts = {}
-    print("Solutions computed for each configuration (n)")
+    print("Solutions computed for each configuration (n):")
     for n in range(2, 11):
         pts, p = solve_n(n, rng, n_restarts=N_RESTARTS)
         print(f"n={n:2d}  p* = {p:.6f}")
