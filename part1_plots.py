@@ -1,21 +1,19 @@
 r"""
 project3_part1_plots.py
 Part 1, Tasks 3-5 of AA222 Project 3. Loads the optimized layouts and
-the (n, p*) CSV produced by project3_part1.py and generates:
-- task 3: scatter plots of the optimal layouts for n in {3, 5, 7},
-  with the four mandate boundaries drawn so feasibility is visible
-- task 4: minimum pairwise distance p* vs portfolio size n
-- task 5: theoretical diversification efficiency eta = 1/(1 + 1/p*)
-  vs minimum separation distance p*
-
-note: this script does NOT plot the Gaussian Process. GP fitting and
-plotting belongs to Part 2 and follows the separate tutorial materials.
+the (n, p*) CSV produced by project3_part1.py and generates
+scatter plots of the optimal layouts for n in {3, 5, 7}
+with the four mandate boundaries drawn so feasibility is visible (task 3),
+the minimum pairwise distance p* vs portfolio size n (task 4), and
+the theoretical diversification efficiency eta = 1/(1 + 1/p*)
+vs minimum separation distance p* (task 5)
+NOTE: this script does NOT plot the Gaussian Process. GP fitting and
+plotting belongs to Part 2 
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
-
 
 #problem geometry (kept in sync with project3_part1.py)
 BENCHMARK = (5.0, 5.0)
@@ -27,11 +25,10 @@ DEFVALUE_CENTER = (2.5, 7.5)
 DEFVALUE_R = 1.2
 
 #feasible region drawing
-
 def draw_feasible_region(ax):
     """
     Draw the four mandate boundaries from Table 1 of the handout on
-    `ax`. Color choices roughly mirror Figure 1 of the handout: green
+    ax. Color choices roughly mirror Figure 1 of the handout: green
     outer disk, red inner disk, orange high-beta zone, purple
     defensive deep-value zone.
     @param ax: matplotlib Axes to draw onto.
@@ -54,11 +51,10 @@ def draw_feasible_region(ax):
 
 
 #task 3: per-n layout scatter
-
 def plot_layout(pts, n, p_star, filename):
     """
     One scatter plot of the optimal layout for portfolio size n with
-    all four constraint regions drawn. Saves to `filename`.
+    all four constraint regions drawn. Saves to {filename}.
     @param pts: (n, 2) array of optimized stock coordinates.
     @param n: portfolio size (used for titling).
     @param p_star: minimum pairwise distance achieved (for the title).
@@ -93,7 +89,6 @@ def plot_layout(pts, n, p_star, filename):
 
 
 #task 4: p* vs n
-
 def plot_p_vs_n(n_values, p_values, filename):
     """
     Line plot of the optimized minimum pairwise distance against
@@ -113,9 +108,7 @@ def plot_p_vs_n(n_values, p_values, filename):
     plt.show()
     plt.close(fig)
 
-
 #task 5: theoretical efficiency vs separation
-
 def plot_efficiency_vs_p(n_values, p_values, filename):
     """
     Theoretical diversification efficiency eta = 1/(1 + 1/p*) plotted
@@ -157,23 +150,22 @@ def main():
     n_values = csv_data[:, 0].astype(int)
     p_values = csv_data[:, 1]
 
-    layouts = np.load("portfolio_layouts.npz")
+    layouts = np.load("portfolio_layouts.npz") #load npz file populated in part1.py
 
-    #task 3: layouts for n in {3, 5, 7}
+    #layouts for n in {3, 5, 7} (task 3)
     for n in (3, 5, 7):
         pts = layouts[str(n)]
         p_star = float(p_values[list(n_values).index(n)])
         plot_layout(pts, n, p_star, f"layout_n{n}.png")
         print(f"saved layout_n{n}.png")
 
-    #task 4: p* vs n
+    #p* vs n (task 4)
     plot_p_vs_n(n_values, p_values, "p_star_vs_n.png")
     print("saved p_star_vs_n.png")
 
-    #task 5: theoretical efficiency vs p*
+    #theoretical efficiency vs p* (task 5)
     plot_efficiency_vs_p(n_values, p_values, "eta_vs_p.png")
     print("saved eta_vs_p.png")
-
 
 if __name__ == "__main__":
     main()
