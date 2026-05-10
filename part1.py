@@ -1,5 +1,5 @@
 r"""
-project3_part1.py
+part1.py
 Part 1, Tasks 1-2 of AA222 Project 3 (Probabilistic Optimization). Solves
 the portfolio layout problem by placing n stocks in the 2D (beta, HML) grid
 to maximize the minimum pairwise L2 distance, subject to the four mandate

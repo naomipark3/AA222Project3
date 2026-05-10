@@ -1,5 +1,5 @@
 r"""
-project3_part1_plots.py
+part1_plots.py
 Part 1, Tasks 3-5 of AA222 Project 3. Loads the optimized layouts and
 the (n, p*) CSV produced by project3_part1.py and generates
 scatter plots of the optimal layouts for n in {3, 5, 7}
