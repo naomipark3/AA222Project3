@@ -1,5 +1,5 @@
 r"""
-project3_part3.py
+part3.py
 Part 3, Task 1 of AA222 Project 3. Uses the GP surrogate from Part 2
 to compute expected yearly portfolio profit for n \in [2, 10] together
 with a 95% confidence band, and produces a figure analogous to Figure
