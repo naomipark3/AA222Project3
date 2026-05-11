@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF
 
-#simulation data (table from the handout, Part 2)
+#simulation data (table from the handout)
 P_TRAIN = np.array([2.5, 2.5, 4.5, 4.5, 6.5, 6.5, 8.0, 8.0])
 ETA_TRAIN = np.array([0.59, 0.62, 0.82, 0.85, 0.86, 0.88, 0.90, 0.91])
 
@@ -56,7 +56,7 @@ def fit_gp(p_train=P_TRAIN, eta_train=ETA_TRAIN):
     @param p_train: training separations, shape (N,).
     @param eta_train: training efficiencies, shape (N,).
     @return: fitted GaussianProcessRegressor (operating on residuals,
-    always pair with predict_gp to get back to η space).
+    always pair with predict_gp to get back to \eta space).
     """
     residuals = eta_train - theoretical_efficiency(p_train)
     kernel = RBF(length_scale=LENGTH_SCALE, length_scale_bounds="fixed")
