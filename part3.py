@@ -61,7 +61,7 @@ def plot_profit_vs_n(n_values, P_mean, P_std, filename="profit_vs_n.png"):
     ax.set_xlabel("Number of stocks (n)")
     ax.set_ylabel("Expected yearly profit (P(n) in USD, millions)")
     ax.set_xticks(n_values)
-    ax.set_title("Expected portfolio profit vs.S portfolio size")
+    ax.set_title("Expected portfolio profit vs. portfolio size")
     ax.legend(loc="best", fontsize=9)
     ax.grid(True, alpha=0.3)
     fig.savefig(filename, dpi=150, bbox_inches="tight")
